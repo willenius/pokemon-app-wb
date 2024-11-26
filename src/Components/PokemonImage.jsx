@@ -1,34 +1,46 @@
-import React from "react";
-import PokemonApplication from "./PokemonApplication";
-import Pokemon from "./Pokemon";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function PokemonJPG({ pokemonName }) {
-    const [pokemonImage, setPokemonImage] = useState(null);
-    const [isLoading, setIsloading] = useState(true);
+  const [pokemonImage, setPokemonImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    if (!pokemonName) return; // Kontrollera att pokemonName finns
 
-    useEffect(() => {
-        async function fetchPokemonImage() {
-            try {
-                setIsloading(true);
-                const res = await fetch(´https://pokeapi.co/api/v2/pokemon/${pokemonName}´)
-                const res = await res.json();
-                const imageUrl = data.sprites.front_default;
-            }
+    async function fetchPokemonImage() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch Pokémon data");
+        }
+        const data = await res.json();
+        const imageUrl = data.sprites.front_default;
+        setPokemonImage(imageUrl);
+      } catch (error) {
+        console.error("Error fetching Pokémon image:", error);
+        setPokemonImage(null); // Återställ om det blir fel
+      } finally {
+        setIsLoading(false); // Körs alltid
+      }
     }
-        // Om jpg ändras, uppdatera bilden
-        setPokemonImage(jpg);
-    }, [jpg]); // Uppdatera om jpg ändras
 
-    return (
-        <>
-            <div>
-                <img src={pokemonImage} alt="Pokemon" />
-            </div>
-        </>
-    );
+    fetchPokemonImage();
+  }, [pokemonName]);
+
+  return (
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : pokemonImage ? (
+        <img src={pokemonImage} alt={`${pokemonName} sprite`} />
+      ) : (
+        <p>Could not load Pokémon image</p>
+      )}
+    </div>
+  );
 }
-/* setPokemonImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/shiny/4.gif`); */
 
-export default PokemonJPG
+export default PokemonJPG;

@@ -12,8 +12,7 @@ function App() {
   return (
     <>
       <h1 id="header"> Pokemon application</h1>
-      <p> Here there will be some pokemons</p>
-      <button onClick={toggleAPI}>
+      <button className="startExBtn" onClick={toggleAPI}>
         {!startPokemon ? "Start Pokémon APP" : "Exit Pokémon app"}
       </button>
       {startPokemon && <PokemonApplication />}

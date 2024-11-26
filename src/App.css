@@ -1,0 +1,18 @@
+* {
+  background-color: #ffe62d;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.startExBtn {
+  font-size: 1.5rem;
+  border-radius: 13px;
+  cursor: pointer;
+  height: 100px;
+  width: 200px;
+}
+
+.startExBtn:hover {
+  background-color: #e9cb1e;
+}
