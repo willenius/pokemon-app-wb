@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function PokemonJPG({ pokemonName }) {
   const [pokemonImage, setPokemonImage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!pokemonName) return; // Kontrollera att pokemonName finns
+    if (!pokemonName) return;
 
     async function fetchPokemonImage() {
       try {
@@ -21,9 +21,9 @@ function PokemonJPG({ pokemonName }) {
         setPokemonImage(imageUrl);
       } catch (error) {
         console.error("Error fetching Pokémon image:", error);
-        setPokemonImage(null); // Återställ om det blir fel
+        setPokemonImage(null);
       } finally {
-        setIsLoading(false); // Körs alltid
+        setIsLoading(false);
       }
     }
 

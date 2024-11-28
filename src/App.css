@@ -1,7 +1,7 @@
 * {
   background-color: #ffe62d;
   font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -12,7 +12,55 @@
   height: 100px;
   width: 200px;
 }
+.pokeButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .startExBtn:hover {
-  background-color: #e9cb1e;
+  background-color: #d7c35d;
+}
+
+.pokeDetailsDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectPoke {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pokemonName {
+  font-size: 2rem;
+}
+
+h3::first-letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
+
+select {
+  text-align: center;
+}
+
+@media only screen and (max-width: 738px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h2 {
+    text-align: center;
+  }
 }

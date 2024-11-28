@@ -11,10 +11,12 @@ function App() {
 
   return (
     <>
-      <h1 id="header"> Pokemon application</h1>
-      <button className="startExBtn" onClick={toggleAPI}>
+    <div className="pokeButtons">
+      <h1 id="header"></h1>
+      <button className="startExBtn" style={{ display: "flex", alignItems: "center", justifyContent: "center"}} onClick={toggleAPI}>
         {!startPokemon ? "Start Pokémon APP" : "Exit Pokémon app"}
       </button>
+      </div>
       {startPokemon && <PokemonApplication />}
     </>
   );
